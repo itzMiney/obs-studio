@@ -69,10 +69,12 @@ elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux|FreeBSD|OpenBSD")
 endif()
 
 find_path(
-  SteinbergVST3_INCLUDE_DIR
-  NAMES pluginterfaces/base/funknown.h
-  PATHS "${STEINBERG_VST3_PATH}" "${STEINBERG_VST3_PATH}/vst3sdk"
-  DOC "Steinberg VST3 SDK directory"
+    SteinbergVST3_INCLUDE_DIR
+    NAMES pluginterfaces/base/funknown.h
+    HINTS ${CMAKE_PREFIX_PATH}
+    PATHS "${STEINBERG_VST3_PATH}"
+    PATH_SUFFIXES include include/vst3sdk vst3sdk
+    DOC "Steinberg VST3 SDK directory"
 )
 
 set(SteinbergVST3_SOURCES)
